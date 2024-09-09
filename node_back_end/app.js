@@ -60,7 +60,9 @@ app.use((req, res, next) => {
 
 
 // 获取文章标签列表
-const articleTags = async (sql_tag = `select atg.article_id, t.tag_id, t.tag_name from article_tag atg, tag t
+const articleTags = async (sql_tag = `
+select atg.article_id, t.tag_id,
+t.tag_name from article_tag atg, tag t
 where atg.tag_id = t.tag_id;`) => {
     const tagResult = await db(sql_tag)
     const tagList = JSON.parse(JSON.stringify(tagResult))
